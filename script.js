@@ -1,8 +1,12 @@
 const container = document.querySelector("#container");
 const resizeBtn = document.querySelector("#resize-btn");
 const clearBtn = document.querySelector("#clear-btn");
+const modeBtn = document.querySelector("#mode-btn");
+const darkenBtn = document.querySelector("#darken-btn");
 
 let currentSize = 16;
+let currentMode = "rainbow"; 
+let isDarkening = true;
 
 function getRandomRgb() {
   const r = Math.floor(Math.random() * 256);
@@ -24,10 +28,20 @@ function createGrid(squaresPerSide) {
     square.style.width = `${squareSize}%`;
     square.style.height = `${squareSize}%`;
 
-    // Extra credit
     square.dataset.passes = "0";
 
     square.addEventListener("mouseenter", () => {
+      if (currentMode === "black") {
+        square.style.backgroundColor = "rgb(0, 0, 0)";
+        return;
+      }
+
+      if (!isDarkening) {
+        const { r, g, b } = getRandomRgb();
+        square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        return;
+      }
+
       let passes = Number(square.dataset.passes);
 
       if (passes === 0) {
@@ -45,7 +59,6 @@ function createGrid(squaresPerSide) {
         const baseG = Number(square.dataset.baseG);
         const baseB = Number(square.dataset.baseB);
 
-        // Reduce el valor RGB un 10% por pasada hacia negro (0, 0, 0)
         const factor = 1 - passes * 0.1;
         const currentR = Math.floor(baseR * factor);
         const currentG = Math.floor(baseG * factor);
@@ -59,10 +72,28 @@ function createGrid(squaresPerSide) {
   }
 }
 
+modeBtn.addEventListener("click", () => {
+  if (currentMode === "rainbow") {
+    currentMode = "black";
+    modeBtn.textContent = "Mode: Black";
+    darkenBtn.disabled = true;
+    darkenBtn.textContent = `Darkening: ON`
+  } else {
+    currentMode = "rainbow";
+    modeBtn.textContent = "Mode: Rainbow";
+    darkenBtn.disabled = false;
+  }
+});
+
+darkenBtn.addEventListener("click", () => {
+  isDarkening = !isDarkening;
+  darkenBtn.textContent = `Darkening: ${isDarkening ? "ON" : "OFF"}`;
+});
+
 resizeBtn.addEventListener("click", () => {
   const userInput = prompt("Enter the number of squares per side (max. 100):");
 
-  if (userInput === null) return; // Si el usuario cancela
+  if (userInput === null) return;
 
   const size = parseInt(userInput, 10);
 
