@@ -19,5 +19,5 @@ A browser-based sketchpad inspired by the classic Etch A Sketch toy, built as pa
 
 ## Live Demo
 
-You can view the live website here: [odin-recipes](https://frikap.github.io/odin-etch-a-sketch/)
+You can view the live website here: [odin-etch-a-sketch](https://frikap.github.io/odin-etch-a-sketch/)
 
