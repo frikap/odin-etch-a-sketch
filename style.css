@@ -70,3 +70,12 @@ button:focus-visible {
 .grid-square {
   background-color: #ffffff;
 }
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+}
