@@ -17,3 +17,7 @@ A browser-based sketchpad inspired by the classic Etch A Sketch toy, built as pa
 - **CSS3:** Flexbox layout and responsive constraints.
 - **JavaScript (Vanilla):** DOM manipulation, event listeners, and dataset state tracking.
 
+## Live Demo
+
+You can view the live website here: [odin-recipes](https://frikap.github.io/odin-etch-a-sketch/)
+
