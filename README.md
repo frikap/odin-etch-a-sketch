@@ -21,7 +21,7 @@ A browser-based sketchpad inspired by the classic Etch A Sketch toy, built as pa
 ## Tech Stack
 
 - **HTML5:** Semantic structure and control buttons.
-- **CSS3:** Clean minimal design, responsive layout (Flexbox), accessible focus rings, and stateful button styling.
+- **CSS3:** Clean minimal design, responsive layout and stateful button styling.
 - **JavaScript:** Dynamic DOM rendering, dataset state tracking for shading passes, and event listeners.
 
 ## Live Demo

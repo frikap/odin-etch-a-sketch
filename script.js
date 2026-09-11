@@ -18,16 +18,15 @@ function getRandomRgb() {
 function createGrid(squaresPerSide) {
   container.innerHTML = "";
   currentSize = squaresPerSide;
+  
+  container.style.gridTemplateColumns = `repeat(${squaresPerSide}, 1fr)`;
+  container.style.gridTemplateRows = `repeat(${squaresPerSide}, 1fr)`;
 
   const totalSquares = squaresPerSide * squaresPerSide;
-  const squareSize = 100 / squaresPerSide;
 
   for (let i = 0; i < totalSquares; i++) {
     const square = document.createElement("div");
     square.classList.add("grid-square");
-    square.style.width = `${squareSize}%`;
-    square.style.height = `${squareSize}%`;
-
     square.dataset.passes = "0";
 
     square.addEventListener("mouseenter", () => {
@@ -43,7 +42,6 @@ function createGrid(squaresPerSide) {
       }
 
       let passes = Number(square.dataset.passes);
-
       if (passes === 0) {
         const { r, g, b } = getRandomRgb();
         square.dataset.baseR = r;
@@ -54,7 +52,6 @@ function createGrid(squaresPerSide) {
       if (passes < 10) {
         passes += 1;
         square.dataset.passes = passes;
-
         const baseR = Number(square.dataset.baseR);
         const baseG = Number(square.dataset.baseG);
         const baseB = Number(square.dataset.baseB);
